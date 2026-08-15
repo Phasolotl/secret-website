@@ -1,0 +1,127 @@
+@use "abstracts" as vars;
+
+// Character Card
+
+.character-card {
+    --card-background: var(--color-background);
+    --card-surface: var(--color-surface);
+    --card-text: var(--color-text);
+    --card-primary: var(--color-primary);
+    --card-secondary: var(--color-secondary);
+    --card-border: var(--color-border);
+
+    overflow: hidden;
+
+    background-color: var(--card-background);
+    color: var(--card-text);
+
+    border: vars.$border-width solid var(--card-border);
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+    a {
+    display: block;
+    }
+}
+
+.character-card.rosa-theme:hover {
+    --card-background: #000000;
+    --card-surface: #12070d;
+    --card-text: #EAACD1;
+    --card-primary: #FF3BC1;
+    --card-secondary: #9E2D5C;
+    --card-border: #9E2D5C;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 0 15px rgba(255, 59, 193, 0.35);
+}
+
+.character-portrait {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 200px;
+
+    border-bottom: vars.$border-width solid var(--card-border);
+
+    color: var(--card-secondary);
+}
+
+.character-info {
+    padding: vars.$spacing-md;
+    color: var(--card-secondary);
+    h3 {
+        color: var(--card-primary);
+    }
+    p {
+        color: var(--card-text);
+    }
+}
+
+.character-theme {
+    display: flex;
+    justify-content: flex-end;
+
+    padding: 0 vars.$spacing-md vars.$spacing-md;
+}
+
+// Stat Row
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+
+    gap: vars.$spacing-md;
+}
+
+// Section Header
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    margin-bottom: vars.$spacing-md;
+}
+
+// Buttons
+
+button {
+    padding: vars.$spacing-sm vars.$spacing-md;
+
+    border: vars.$border-width solid var(--card-border);
+    background-color: var(--card-surface);
+    color: var(--card-text);
+
+    font: inherit;
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+button:hover {
+    border-color: var(--card-primary);
+    color: var(--card-primary);
+
+    box-shadow:
+        0 0 8px color-mix(
+            in srgb,
+            var(--card-primary) 40%,
+            transparent
+        );
+}
+
+button:active {
+    transform: translateY(1px);
+}

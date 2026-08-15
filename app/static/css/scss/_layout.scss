@@ -1,0 +1,40 @@
+@use "abstracts" as vars;
+
+// Header
+
+.site-header {
+    width: 100%;
+}
+
+.site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: vars.$spacing-md vars.$spacing-lg;
+}
+
+.site-logo {
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: vars.$spacing-md;
+}
+
+// Main
+
+.site-main {
+    width: 100%;
+    max-width: vars.$site-width;
+    margin-inline: auto;
+}
+
+// Footer
+
+.site-footer {
+    padding: vars.$spacing-lg;
+
+    text-align: center;
+}

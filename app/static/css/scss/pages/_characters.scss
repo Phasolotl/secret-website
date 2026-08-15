@@ -1,0 +1,106 @@
+@use "../abstracts" as vars;
+
+// Character Sheet
+
+.character-sheet {
+    width: 100%;
+    max-width: vars.$sheet-width;
+    margin-inline: auto;
+
+    border: vars.$border-width solid;
+}
+
+// Sheet Header
+
+.sheet-header {
+    padding: vars.$spacing-lg;
+
+    text-align: center;
+}
+
+.sheet-header h1 {
+    margin-bottom: vars.$spacing-sm;
+
+    letter-spacing: 0.5rem;
+}
+
+// Resources
+
+.resources {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    border-top: vars.$border-width solid;
+}
+
+.resource-stats,
+.combat-stats {
+    padding: vars.$spacing-md;
+}
+
+.combat-stats {
+    border-left: vars.$border-width solid;
+}
+
+// Attributes
+
+.attributes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: vars.$border-width solid;
+}
+
+.attribute-group {
+    padding: vars.$spacing-md;
+}
+
+.attribute-group + .attribute-group {
+    border-left: vars.$border-width solid;
+}
+
+.attribute-group h2 {
+    margin-bottom: vars.$spacing-sm;
+}
+
+// General Sheet Sections
+
+.sheet-section {
+    padding: vars.$spacing-md;
+
+    border-top: vars.$border-width solid;
+}
+
+// Creation
+
+.creation {
+    padding: vars.$spacing-md;
+}
+
+.creation + .creation {
+    margin-top: vars.$spacing-md;
+}
+
+// Mobile
+
+@media (max-width: vars.$mobile-breakpoint) {
+
+    .resources {
+        grid-template-columns: 1fr;
+    }
+
+    .combat-stats {
+        border-top: vars.$border-width solid;
+        border-left: none;
+    }
+
+    .attributes {
+        grid-template-columns: 1fr;
+    }
+
+    .attribute-group + .attribute-group {
+        border-top: vars.$border-width solid;
+        border-left: none;
+    }
+
+}

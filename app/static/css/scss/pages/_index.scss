@@ -1,0 +1,49 @@
+@use "../abstracts" as vars;
+
+// Compendium
+
+.character-compendium {
+    padding-block: vars.$spacing-xl;
+}
+
+// Header
+
+.compendium-header {
+    margin-bottom: vars.$spacing-xl;
+
+    text-align: center;
+}
+
+.compendium-header h1 {
+    margin-bottom: vars.$spacing-sm;
+}
+
+// Character Collection
+
+.character-collection {
+    width: 100%;
+}
+
+.collection-header {
+    margin-bottom: vars.$spacing-md;
+}
+
+// Character Grid
+
+.character-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: vars.$spacing-lg;
+}
+
+// Responsive
+
+@media (max-width: vars.$mobile-breakpoint) {
+
+    .character-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

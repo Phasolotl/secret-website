@@ -4,14 +4,13 @@
     Characters | Character Compendium
 {% endblock %}
 
-
 {% block content %}
 
 <div class="character-compendium">
     <section class="compendium-header">
-        <h1>CHARACTER COMPENDIUM</h1>
+        <h1>PHI'S SODA COMPENDIUM</h1>
         <p>
-            A collection of characters from my adventures.
+            A collection of my SODA character sheets
         </p>
     </section>
     <section class="character-collection">
@@ -22,50 +21,74 @@
 
             <!-- Character Card -->
 
-            <article class="character-card">
+            <article class="character-card rosa-theme">
                 <a href="{{ url_for('sheet') }}">
                     <div class="character-portrait">
                         <span>PORTRAIT</span>
                     </div>
                     <div class="character-info">
-                        <h3>CANVAS</h3>
+                        <h3>ROSA(.AI)</h3>
                         <p>
-                            Level 1 Body Artist
+                            Ambitious Artist
                         </p>
                     </div>
                 </a>
+                <div class="character-theme">
+                    <button
+                        type="button"
+                        id="rosa-theme-toggle"
+                        class="theme-toggle">
+                        Rosa's Theme
+                    </button>
+                </div>
             </article>
 
             <!-- Character Card -->
 
-            <article class="character-card">
+            <article class="character-card pyuku-theme">
                 <a href="#">
                     <div class="character-portrait">
                         <span>PORTRAIT</span>
                     </div>
                     <div class="character-info">
-                        <h3>CHARACTER NAME</h3>
+                        <h3>PYUKUMUKUAELIOSOMNIA</h3>
                         <p>
-                            Level 3 Class
+                            Determined Artist
                         </p>
                     </div>
                 </a>
+                <div class="character-theme">
+                    <button
+                        type="button"
+                        id="pyuku-theme-toggle"
+                        class="theme-toggle">
+                        Pyuku's Theme
+                    </button>
+                </div>
             </article>
 
             <!-- Character Card -->
 
-            <article class="character-card">
+            <article class="character-card terra-theme">
                 <a href="#">
                     <div class="character-portrait">
                         <span>PORTRAIT</span>
                     </div>
                     <div class="character-info">
-                        <h3>ANOTHER CHARACTER</h3>
+                        <h3>TERRA</h3>
                         <p>
-                            Level 5 Class
+                            ???
                         </p>
                     </div>
                 </a>
+                <div class="character-theme">
+                    <button
+                        type="button"
+                        id="terra-theme-toggle"
+                        class="theme-toggle">
+                        Terra's Theme
+                    </button>
+                </div>
             </article>
         </div>
     </section>

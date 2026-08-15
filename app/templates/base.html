@@ -12,11 +12,11 @@
           href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
-<body>
+<body class="{% block body_class %}{% endblock %}">
     <header class="site-header">
         <nav class="site-nav">
             <a href="{{ url_for('index') }}" class="site-logo">
-                TTRPG NAME
+                SODA: THE NEVERENDING DRINK (S2)
             </a>
             <div class="nav-links">
                 <a href="{{ url_for('index') }}">
@@ -34,7 +34,7 @@
     <footer class="site-footer">
 
         <p>
-            Character Compendium
+            Phi <3
         </p>
 
     </footer>
