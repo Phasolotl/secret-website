@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}
+CANVAS | Game Sheets
+{% endblock %}
+
+{% block content %}
+<body>
+<main class="character-sheet">
+
+    <header class="sheet-header">
+        <h1>CANVAS</h1>
+        <p>LEVEL 1 BODY ARTIST</p>
+    </header>
+
+    <section class="resources">
+        <div class="resource-stats">
+            <div class="stat-row">
+                <span>HP:</span>
+                <span>10/10</span>
+            </div>
+            <div class="stat-row">
+                <span>IM:</span>
+                <span>10/10</span>
+            </div>
+            <div class="stat-row">
+                <span>TP:</span>
+                <span>10/10</span>
+            </div>
+        </div>
+        <div class="combat-stats">
+            <div class="stat-row">
+                <span>ATK:</span>
+                <span>0</span>
+            </div>
+            <div class="stat-row">
+                <span>DEF:</span>
+                <span>0</span>
+            </div>
+            <div class="stat-row">
+                <span>DICE:</span>
+                <span>D2</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="attributes">
+
+        <!-- Mind -->
+
+        <div class="attribute-group">
+            <h2>MIND: 0</h2>
+            <div class="stat-row">
+                <span>Creativity:</span>
+                <span>0</span>
+            </div>
+            <div class="stat-row">
+                <span>Technology:</span>
+                <span>0</span>
+            </div>
+            <div class="stat-row">
+                <span>Knowledge:</span>
+                <span>0</span>
+            </div>
+        </div>
+
+        <!-- Body -->
+
+        <div class="attribute-group">
+            <h2>BODY: 0</h2>
+            <div class="stat-row">
+                <span>Strength:</span>
+                <span>0</span>
+            </div>
+            <div class="stat-row">
+                <span>Dexterity:</span>
+                <span>0</span>
+            </div>
+            <div class="stat-row">
+                <span>Stealth:</span>
+                <span>0</span>
+            </div>
+        </div>
+
+        <!-- Soul -->
+
+        <div class="attribute-group">
+            <h2>SOUL: 0</h2>
+            <div class="stat-row">
+                <span>Charisma:</span>
+                <span>0</span>
+            </div>
+            <div class="stat-row">
+                <span>Perception:</span>
+                <span>0</span>
+            </div>
+            <div class="stat-row">
+                <span>Willpower:</span>
+                <span>0</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="sheet-section basic-attack">
+        <header class="section-header">
+            <h2>BASIC ATTACK</h2>
+        </header>
+        <p>
+            Description of basic attack goes here.
+        </p>
+    </section>
+
+    <section class="sheet-section creations">
+        <header class="section-header">
+            <h2>CREATIONS</h2>
+            <span>(0/1)</span>
+        </header>
+
+        <p><strong>Preparation:</strong> Full</p>
+
+        <div class="creation">
+            <h3>Name of Skill <span>(X TP)</span></h3>
+            <p>Open Slot <span>(X IM)</span></p>
+            <p>
+                Description of Creation
+            </p>
+        </div>
+    </section>
+
+    <section class="sheet-section inventory">
+        <header class="section-header">
+            <h2>INVENTORY</h2>
+            <span>(0/3)</span>
+        </header>
+        <p>
+            Tickets on Hand: 500
+        </p>
+    </section>
+
+    <section class="sheet-section storage">
+        <header class="section-header">
+            <h2>STORAGE</h2>
+            <span>(0/10)</span>
+        </header>
+        <p>
+            Items in Storage: 0
+        </p>
+    </section>
+
+    <section class="sheet-section equipment">
+        <header class="section-header">
+            <h2>EQUIPMENT</h2>
+            <span>(0/2)</span>
+        </header>
+        <p>
+            Open Slot
+        </p>
+    </section>
+
+    <section class="sheet-section injuries">
+        <header class="section-header">
+            <h2>INJURIES</h2>
+        </header>
+        <p>
+            None
+        </p>
+    </section>
+
+</main>
+</body>
+{% endblock %}

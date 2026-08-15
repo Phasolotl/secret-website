@@ -1,0 +1,146 @@
+// VARIABLES
+
+$sheet-width: 900px;
+$border-width: 2px;
+
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+$font-body: sans-serif;
+$font-heading: sans-serif;
+
+$mobile-breakpoint: 600px;
+
+// GLOBAL DEFAULTS
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: $font-body;
+    padding: clamp(1rem, 4vw, 3rem);
+    min-height: 100vh;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+// BACKGROUND + CENTER
+
+.character-sheet {
+    width: min(100%, $sheet-width);
+    margin-inline: auto;
+}
+
+// LAYOUT
+
+.character-sheet {
+    border: $border-width solid;
+}
+
+.sheet-section,
+.resources,
+.attributes {
+    border-top: $border-width solid;
+}
+
+.sheet-header {
+    text-align: center;
+    padding: $spacing-lg;
+
+    h1 {
+        letter-spacing: 0.5rem;
+        font-family: $font-heading;
+    }
+
+    p {
+        margin-top: $spacing-sm;
+        font-family: $font-body;
+    }
+}
+
+.resources {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.resource-stats,
+.combat-stats {
+    padding: $spacing-md;
+}
+
+.combat-stats {
+    border-left: $border-width solid;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-md;
+}
+
+.attributes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.attribute-group {
+    padding: $spacing-md;
+
+    & + .attribute-group {
+        border-left: $border-width solid;
+    }
+
+    h2 {
+        margin-bottom: $spacing-sm;
+    }
+}
+
+.sheet-section {
+    padding: $spacing-md;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    margin-bottom: $spacing-lg;
+}
+
+.creation {
+    padding: $spacing-md;
+}
+
+.creation + .creation {
+    margin-top: $spacing-md;
+}
+
+// Responsive
+
+@media (max-width: $mobile-breakpoint) {
+
+    .resources {
+        grid-template-columns: 1fr;
+    }
+
+    .combat-stats {
+        border-left: none;
+        border-top: $border-width solid;
+    }
+
+    .attributes {
+        grid-template-columns: 1fr;
+    }
+
+    .attribute-group + .attribute-group {
+        border-left: none;
+        border-top: $border-width solid;
+    }
+}

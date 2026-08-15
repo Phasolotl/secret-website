@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  padding: clamp(1rem, 4vw, 3rem);
+  min-height: 100vh;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+.character-sheet {
+  width: min(100%, 900px);
+  margin-inline: auto;
+}
+
+.character-sheet {
+  border: 2px solid;
+}
+
+.sheet-section,
+.resources,
+.attributes {
+  border-top: 2px solid;
+}
+
+.sheet-header {
+  text-align: center;
+  padding: 1.5rem;
+}
+.sheet-header h1 {
+  letter-spacing: 0.5rem;
+  font-family: sans-serif;
+}
+.sheet-header p {
+  margin-top: 0.5rem;
+  font-family: sans-serif;
+}
+
+.resources {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.resource-stats,
+.combat-stats {
+  padding: 1rem;
+}
+
+.combat-stats {
+  border-left: 2px solid;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.attributes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.attribute-group {
+  padding: 1rem;
+}
+.attribute-group + .attribute-group {
+  border-left: 2px solid;
+}
+.attribute-group h2 {
+  margin-bottom: 0.5rem;
+}
+
+.sheet-section {
+  padding: 1rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1.5rem;
+}
+
+.creation {
+  padding: 1rem;
+}
+
+.creation + .creation {
+  margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .resources {
+    grid-template-columns: 1fr;
+  }
+  .combat-stats {
+    border-left: none;
+    border-top: 2px solid;
+  }
+  .attributes {
+    grid-template-columns: 1fr;
+  }
+  .attribute-group + .attribute-group {
+    border-left: none;
+    border-top: 2px solid;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Characters | Character Compendium
+{% endblock %}
+
+
+{% block content %}
+
+<div class="character-compendium">
+    <section class="compendium-header">
+        <h1>CHARACTER COMPENDIUM</h1>
+        <p>
+            A collection of characters from my adventures.
+        </p>
+    </section>
+    <section class="character-collection">
+        <header class="collection-header">
+            <h2>CHARACTERS</h2>
+        </header>
+        <div class="character-grid">
+
+            <!-- Character Card -->
+
+            <article class="character-card">
+                <a href="{{ url_for('sheet') }}">
+                    <div class="character-portrait">
+                        <span>PORTRAIT</span>
+                    </div>
+                    <div class="character-info">
+                        <h3>CANVAS</h3>
+                        <p>
+                            Level 1 Body Artist
+                        </p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Character Card -->
+
+            <article class="character-card">
+                <a href="#">
+                    <div class="character-portrait">
+                        <span>PORTRAIT</span>
+                    </div>
+                    <div class="character-info">
+                        <h3>CHARACTER NAME</h3>
+                        <p>
+                            Level 3 Class
+                        </p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Character Card -->
+
+            <article class="character-card">
+                <a href="#">
+                    <div class="character-portrait">
+                        <span>PORTRAIT</span>
+                    </div>
+                    <div class="character-info">
+                        <h3>ANOTHER CHARACTER</h3>
+                        <p>
+                            Level 5 Class
+                        </p>
+                    </div>
+                </a>
+            </article>
+        </div>
+    </section>
+</div>
+
+{% endblock %}
