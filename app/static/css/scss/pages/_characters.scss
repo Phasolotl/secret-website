@@ -3,11 +3,14 @@
 // Character Sheet
 
 .character-sheet {
+    position: relative;
     width: 100%;
     max-width: vars.$sheet-width;
     margin-inline: auto;
 
+    user-select: text;
     border: vars.$border-width solid;
+    z-index: 2;
 }
 
 // Sheet Header
@@ -104,3 +107,161 @@
     }
 
 }
+
+//
+// Rosa Themes
+//
+
+// Color Theme
+.theme-rosa {
+    --color-background: #000000;
+    --color-surface: #12070d;
+    --color-text: #EAACD1;
+    --color-primary: #FF3BC1;
+    --color-secondary: #9E2D5C;
+    --color-border: #9E2D5C;
+}
+
+.rosa-world {
+    position: relative;
+
+    min-height: 100vh;
+    width: 100%;
+
+    overflow: hidden;
+    user-select: none;
+
+    background: #000000;
+    z-index: 2;
+}
+
+// Starry background
+
+.rosa-stars {
+    position: fixed;
+
+    inset: 0;
+
+    min-width: 100vw;
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.rosa-star {
+    position: absolute;
+
+    display: block;
+
+    line-height: 1;
+
+    color: var(--star-color);
+
+    user-select: none;
+
+    animation:
+        rosa-star-twinkle var(--star-duration)
+        ease-in-out
+        infinite var(--star-delay),
+
+        rosa-star-drift var(--drift-duration)
+        ease-in-out
+        infinite alternate;
+}
+
+@keyframes rosa-star-twinkle {
+    0%,
+    100% {
+        opacity: 0.15;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes rosa-star-drift {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform:
+            translate(
+                var(--drift-x),
+                var(--drift-y)
+            );
+    }
+}
+
+// Cursor glow
+
+.rosa-glow {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 10;
+
+    background: radial-gradient(
+        circle 180px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 59, 193, 0.12),
+        rgba(158, 45, 92, 0.05) 40%,
+        transparent 70%
+    );
+}
+
+.rosa-trail {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 11;
+}
+
+.rosa-trail-segment {
+    position: absolute;
+
+    height: 3px;
+
+    pointer-events: none;
+
+    transform-origin: left center;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 59, 193, 0.9),
+        rgba(234, 172, 209, 0.7),
+        transparent
+    );
+
+    box-shadow:
+        0 0 6px rgba(255, 59, 193, 0.8),
+        0 0 14px rgba(158, 45, 92, 0.5);
+
+    animation: rosa-slash-fade 0.45s ease-out forwards;
+}
+
+@keyframes rosa-slash-fade {
+    from {
+        opacity: 0.9;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+// Animated borders
+
+// Interactive stats
+
+// Waking sections
+
+// Roses

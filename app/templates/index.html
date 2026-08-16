@@ -6,7 +6,9 @@
 
 {% block content %}
 
-<div class="character-compendium">
+
+<main class="home-container">
+    <div class="character-compendium">
     <section class="compendium-header">
         <h1>PHI'S SODA COMPENDIUM</h1>
         <p>
@@ -22,12 +24,12 @@
             <!-- Character Card -->
 
             <article class="character-card rosa-theme">
-                <a href="{{ url_for('sheet') }}">
+                <a href="{{ url_for('rosa_sheet') }}">
                     <div class="character-portrait">
                         <span>PORTRAIT</span>
                     </div>
                     <div class="character-info">
-                        <h3>ROSA(.AI)</h3>
+                        <h3>ROSA</h3>
                         <p>
                             Ambitious Artist
                         </p>
@@ -51,7 +53,7 @@
                         <span>PORTRAIT</span>
                     </div>
                     <div class="character-info">
-                        <h3>PYUKUMUKUAELIOSOMNIA</h3>
+                        <h3>PYUKU</h3>
                         <p>
                             Determined Artist
                         </p>
@@ -93,5 +95,6 @@
         </div>
     </section>
 </div>
+</main>
 
 {% endblock %}

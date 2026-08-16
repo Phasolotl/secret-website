@@ -28,6 +28,12 @@
     }
 }
 
+.character-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 0 15px rgba(0, 0, 0, 0.2);
+}
+
 .character-card.rosa-theme:hover {
     --card-background: #000000;
     --card-surface: #12070d;

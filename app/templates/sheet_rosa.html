@@ -9,7 +9,14 @@ ROSA(.AI) | Game Sheets
 {% endblock %}
 
 {% block content %}
-<body>
+
+    <div class="rosa-glow" aria-hidden="true"></div>
+    <div class="rosa-trail" aria-hidden="true"></div>
+
+<div class="rosa-world">
+
+    <div class="rosa-stars" aria-hidden="true"></div>
+
 <main class="character-sheet">
 
     <header class="sheet-header">
@@ -172,7 +179,7 @@ ROSA(.AI) | Game Sheets
             None
         </p>
     </section>
-
 </main>
-</body>
+<script src="{{ url_for('static', filename='js/rosa.js') }}"></script>
+</div>
 {% endblock %}

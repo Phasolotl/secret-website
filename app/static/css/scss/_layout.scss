@@ -25,16 +25,23 @@
 
 // Main
 
-.site-main {
-    width: 100%;
-    max-width: vars.$site-width;
+.home-container {
+    width: min(100% - 2rem, 1200px);
     margin-inline: auto;
+
 }
 
 // Footer
 
 .site-footer {
     padding: vars.$spacing-lg;
-
     text-align: center;
+}
+
+// Z-index
+
+header,
+footer {
+    position: relative;
+    z-index: 101;
 }

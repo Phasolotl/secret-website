@@ -12,16 +12,6 @@
     --color-border: #222222;
 }
 
-// Rosa
-.theme-rosa {
-    --color-background: #000000;
-    --color-surface: #12070d;
-    --color-text: #EAACD1;
-    --color-primary: #FF3BC1;
-    --color-secondary: #9E2D5C;
-    --color-border: #9E2D5C;
-}
-
 // Box Model
 
 *,
@@ -37,7 +27,7 @@ html {
 }
 
 body {
-    margin: 0;
+    margin: 0 auto;
     min-height: 100vh;
 
     background-color: var(--color-background);

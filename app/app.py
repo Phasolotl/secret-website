@@ -9,7 +9,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/sheet')
+@app.route('/rosa', endpoint='rosa_sheet')
 def sheet():
     return render_template('sheet_rosa.html')
 
