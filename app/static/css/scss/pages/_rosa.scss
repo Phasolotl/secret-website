@@ -1,0 +1,321 @@
+//
+// Rosa Themes
+//
+
+// Color Theme
+.theme-rosa {
+    --color-background: #000000;
+    --color-surface: #12070d;
+    --color-text: #EAACD1;
+    --color-primary: #FF3BC1;
+    --color-secondary: #9E2D5C;
+    --color-border: #9E2D5C;
+}
+
+.rosa-world {
+    position: relative;
+
+    min-height: 100vh;
+    width: 100%;
+
+    overflow: hidden;
+    user-select: none;
+
+    background: #000000;
+    z-index: 2;
+}
+
+// Starry background
+
+.rosa-stars {
+    position: fixed;
+
+    inset: 0;
+
+    min-width: 100vw;
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.rosa-star {
+    position: absolute;
+
+    display: block;
+
+    line-height: 1;
+
+    color: var(--star-color);
+
+    user-select: none;
+
+    animation:
+        rosa-star-twinkle var(--star-duration)
+        ease-in-out
+        infinite var(--star-delay),
+
+        rosa-star-drift var(--drift-duration)
+        ease-in-out
+        infinite alternate;
+}
+
+@keyframes rosa-star-twinkle {
+    0%,
+    100% {
+        opacity: 0.15;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes rosa-star-drift {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform:
+            translate(
+                var(--drift-x),
+                var(--drift-y)
+            );
+    }
+}
+
+// Cursor glow
+
+.rosa-glow {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 10;
+
+    background: radial-gradient(
+        circle 180px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 59, 193, 0.12),
+        rgba(158, 45, 92, 0.05) 40%,
+        transparent 70%
+    );
+}
+
+// Cursor Slash
+
+.rosa-trail {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 11;
+}
+
+.rosa-trail-segment {
+    position: absolute;
+
+    height: 3px;
+
+    pointer-events: none;
+
+    transform-origin: left center;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 59, 193, 0.9),
+        rgba(234, 172, 209, 0.7),
+        transparent
+    );
+
+    box-shadow:
+        0 0 6px rgba(255, 59, 193, 0.8),
+        0 0 14px rgba(158, 45, 92, 0.5);
+
+    animation: rosa-slash-fade 0.45s ease-out forwards;
+}
+
+.rosa-charge {
+    position: fixed;
+
+    width: calc(2px + (var(--charge, 0) * 10px));
+    height: calc(2px + (var(--charge, 0) * 10px));
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 101;
+
+    transform: translate(-50%, -50%);
+
+    //opacity: var(--charge, 0);
+
+    background: white;
+
+    box-shadow:
+    0 0 calc(8px + (var(--charge, 0) * 20px))
+        rgba(255, 255, 255, 0.9),
+
+    0 0 calc(20px + (var(--charge, 0) * 40px))
+        rgba(255, 59, 193, 0.8),
+
+    0 0 calc(40px + (var(--charge, 0) * 80px))
+        rgba(158, 45, 92, 0.5);
+
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+    animation:
+        rosa-charge-pulse
+        0.8s ease-in-out infinite;
+}
+
+.rosa-slash {
+    position: fixed;
+    width: 300px;
+    height: 8px;
+
+    pointer-events: none;
+    z-index: 102;
+
+    transform-origin: left center;
+
+    animation:
+        rosa-tear-open
+        0.45s ease-out
+        forwards;
+
+    &__core {
+        position: absolute;
+        inset: 0;
+
+        background: linear-gradient(
+            90deg,
+            transparent,
+            #9E2D5C 10%,
+            black 45%,
+            black 55%,
+            #FF3BC1 90%,
+            transparent
+        );
+
+        border-radius: 50%;
+
+        filter:
+            drop-shadow(0 0 5px black)
+            drop-shadow(0 0 15px #FF3BC1);
+    }
+
+    &__glow {
+        position: absolute;
+
+        inset: -15px 0;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 59, 193, 0.6),
+                rgba(234, 172, 209, 0.5),
+                transparent
+            );
+
+        filter: blur(12px);
+
+        opacity: 0.8;
+    }
+
+    &__tear {
+        position: absolute;
+
+        inset: -12px 0;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                #9E2D5C,
+                #FF3BC1,
+                #9E2D5C,
+                transparent
+            );
+
+        clip-path: polygon(
+            0% 50%,
+            8% 30%,
+            17% 55%,
+            27% 20%,
+            38% 48%,
+            49% 10%,
+            61% 52%,
+            73% 25%,
+            84% 60%,
+            93% 35%,
+            100% 50%,
+            93% 65%,
+            82% 45%,
+            72% 80%,
+            60% 48%,
+            49% 90%,
+            38% 52%,
+            26% 75%,
+            16% 45%,
+            7% 70%
+        );
+
+        filter: blur(2px);
+    }
+}
+
+@keyframes rosa-charge-pulse {
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+@keyframes rosa-tear-open {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            rotate(var(--slash-angle))
+            scaleX(0.05);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    45% {
+        transform:
+            rotate(var(--slash-angle))
+            scaleX(1.05);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            rotate(var(--slash-angle))
+            scaleX(1.15);
+    }
+}
+
+// Animated borders
+
+// Interactive stats
+
+// Waking sections
+
+// Roses

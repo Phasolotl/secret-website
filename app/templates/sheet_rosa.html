@@ -11,6 +11,7 @@ ROSA(.AI) | Game Sheets
 {% block content %}
 
     <div class="rosa-glow" aria-hidden="true"></div>
+    <div class="rosa-charge" aria-hidden="true"></div>
     <div class="rosa-trail" aria-hidden="true"></div>
 
 <div class="rosa-world">
@@ -116,9 +117,15 @@ ROSA(.AI) | Game Sheets
         <header class="section-header">
             <h2>BASIC ATTACK</h2>
         </header>
-        <p>
-            Description of basic attack goes here.
-        </p>
+        <div class="sheet-entry basic">
+            <h3>Name of Basic Attack</h3>
+            <h3><span>(Range)</span> / <span>(Trait)</span></h3>
+            <p>"Quote"</p>
+            <p>Flavor text</p>
+            <p>
+                Description of Basic Attack
+            </p>
+        </div>
     </section>
 
     <section class="sheet-section creations">
@@ -129,15 +136,43 @@ ROSA(.AI) | Game Sheets
 
         <p><strong>Preparation:</strong> Full</p>
 
-        <div class="creation">
-            <h3>Name of Skill <span>(X TP)</span></h3>
-            <p>Open Slot <span>(X IM)</span></p>
+        <div class="sheet-entry creation">
+            <h3>Name of Creation</h3>
+            <h3><span>(Range)</span> / <span>(X IM)</span></h3>
             <p>"Quote"</p>
             <p>Flavor text</p>
-
             <p>
                 Description of Creation
             </p>
+        </div>
+    </section>
+
+    <section class="sheet-section skills">
+        <div class="skill-section">
+            <header class="section-header">
+                <h2>SKILLS</h2>
+            </header>
+
+            <div class="sheet-entry skill">
+                <h3>Name of Skill <span>(-X TP)</span></h3>
+                <p>"Quote"</p>
+                <p>
+                    Description of Skill
+                </p>
+            </div>
+        </div>
+        <div class="skill-section">
+            <header class="section-header">
+                <h2>BANES</h2>
+            </header>
+
+            <div class="sheet-entry bane">
+                <h3>Name of Bane <span>(+X TP)</span></h3>
+                <p>"Quote"</p>
+                <p>
+                    Description of Bane
+                </p>
+            </div>
         </div>
     </section>
 
@@ -146,19 +181,27 @@ ROSA(.AI) | Game Sheets
             <h2>INVENTORY</h2>
             <span>(0/3)</span>
         </header>
-        <p>
+        <p class="sheet-entry ticket">
             Tickets on Hand: 500
         </p>
+        <div class="sheet-entry items">
+            <h3>Item</h3>
+            <p>Description of item</p>
+        </div>
     </section>
 
-    <section class="sheet-section storage">
+     <section class="sheet-section storage">
         <header class="section-header">
             <h2>STORAGE</h2>
             <span>(0/10)</span>
         </header>
-        <p>
-            Items in Storage: 0
+        <p class="sheet-entry stored-ticket">
+            Tickets in Storage: 0
         </p>
+        <div class="sheet-entry stored-items">
+            <h3>Item</h3>
+            <p>Description of item</p>
+        </div>
     </section>
 
     <section class="sheet-section equipment">
@@ -166,18 +209,39 @@ ROSA(.AI) | Game Sheets
             <h2>EQUIPMENT</h2>
             <span>(0/2)</span>
         </header>
-        <p>
-            Open Slot
-        </p>
+        <div class="sheet-entry trinket">
+            <h3>Trinket</h3>
+            <p>Description of Trinket</p>
+        </div>
     </section>
 
     <section class="sheet-section injuries">
-        <header class="section-header">
-            <h2>INJURIES</h2>
-        </header>
-        <p>
-            None
-        </p>
+        <div class="condition-section">
+            <header class="section-header">
+                <h2>INJURIES</h2>
+            </header>
+
+            <div class="sheet-entry injury">
+                <h3>Injury I</h3>
+                <p>"Quote"</p>
+                <p>
+                    Description of Injury
+                </p>
+            </div>
+        </div>
+        <div class="condition-section">
+            <header class="section-header">
+                <h2>CONDITION</h2>
+            </header>
+
+            <div class="sheet-entry condition">
+                <h3>Name of Condition</h3>
+                <p>"Quote"</p>
+                <p>
+                    Description of Condition
+                </p>
+            </div>
+        </div>
     </section>
 </main>
 <script src="{{ url_for('static', filename='js/rosa.js') }}"></script>

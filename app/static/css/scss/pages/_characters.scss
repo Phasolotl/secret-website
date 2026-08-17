@@ -19,12 +19,11 @@
     padding: vars.$spacing-lg;
 
     text-align: center;
-}
+    h1 {
+        margin-bottom: vars.$spacing-sm;
 
-.sheet-header h1 {
-    margin-bottom: vars.$spacing-sm;
-
-    letter-spacing: 0.5rem;
+        letter-spacing: vars.$spacing-sm;
+    }
 }
 
 // Resources
@@ -56,14 +55,13 @@
 
 .attribute-group {
     padding: vars.$spacing-md;
+    h2 {
+        margin-bottom: vars.$spacing-sm;
+    }
 }
 
 .attribute-group + .attribute-group {
     border-left: vars.$border-width solid;
-}
-
-.attribute-group h2 {
-    margin-bottom: vars.$spacing-sm;
 }
 
 // General Sheet Sections
@@ -74,14 +72,77 @@
     border-top: vars.$border-width solid;
 }
 
+.sheet-entry {
+    padding: vars.$spacing-md;
+
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    h3 {
+        margin-bottom: vars.$spacing-sm;
+
+        color: var(--color-primary);
+    }
+    h3 span {
+        color: var(--color-secondary);
+        font-size: 0.85em;
+    }
+    p + p {
+        margin-top: vars.$spacing-sm;
+    }
+}
+
 // Creation
 
-.creation {
+.creations {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$spacing-md;
+}
+
+// Skill
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+
+    padding: 0;
+}
+
+.skill-section {
+    padding: vars.$spacing-md;
+    h2 {
+        color: var(--color-primary);
+    }
+}
+
+.skill-section + .skill-section {
+    border-left: vars.$border-width solid var(--color-border);
+}
+
+.skill-section .section-header {
+    margin-bottom: vars.$spacing-md;
+}
+
+// Injuries & Conditions
+
+.injuries {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    padding: 0;
+}
+
+.condition-section {
     padding: vars.$spacing-md;
 }
 
-.creation + .creation {
-    margin-top: vars.$spacing-md;
+.condition-section + .condition-section {
+    border-left: vars.$border-width solid var(--color-border);
+}
+
+.condition-section .section-header {
+    margin-bottom: vars.$spacing-md;
 }
 
 // Mobile
@@ -108,160 +169,27 @@
 
 }
 
-//
-// Rosa Themes
-//
+@media (max-width: vars.$mobile-breakpoint) {
 
-// Color Theme
-.theme-rosa {
-    --color-background: #000000;
-    --color-surface: #12070d;
-    --color-text: #EAACD1;
-    --color-primary: #FF3BC1;
-    --color-secondary: #9E2D5C;
-    --color-border: #9E2D5C;
-}
-
-.rosa-world {
-    position: relative;
-
-    min-height: 100vh;
-    width: 100%;
-
-    overflow: hidden;
-    user-select: none;
-
-    background: #000000;
-    z-index: 2;
-}
-
-// Starry background
-
-.rosa-stars {
-    position: fixed;
-
-    inset: 0;
-
-    min-width: 100vw;
-    min-height: 100vh;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-    z-index: 0;
-}
-
-.rosa-star {
-    position: absolute;
-
-    display: block;
-
-    line-height: 1;
-
-    color: var(--star-color);
-
-    user-select: none;
-
-    animation:
-        rosa-star-twinkle var(--star-duration)
-        ease-in-out
-        infinite var(--star-delay),
-
-        rosa-star-drift var(--drift-duration)
-        ease-in-out
-        infinite alternate;
-}
-
-@keyframes rosa-star-twinkle {
-    0%,
-    100% {
-        opacity: 0.15;
+    .skills {
+        grid-template-columns: 1fr;
     }
 
-    50% {
-        opacity: 0.4;
+    .skill-section + .skill-section {
+        border-top: vars.$border-width solid var(--color-border);
+        border-left: none;
     }
 }
 
-@keyframes rosa-star-drift {
-    from {
-        transform: translate(0, 0);
+@media (max-width: vars.$mobile-breakpoint) {
+
+    .injuries {
+        grid-template-columns: 1fr;
     }
 
-    to {
-        transform:
-            translate(
-                var(--drift-x),
-                var(--drift-y)
-            );
-    }
-}
-
-// Cursor glow
-
-.rosa-glow {
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-    z-index: 10;
-
-    background: radial-gradient(
-        circle 180px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(255, 59, 193, 0.12),
-        rgba(158, 45, 92, 0.05) 40%,
-        transparent 70%
-    );
-}
-
-.rosa-trail {
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 11;
-}
-
-.rosa-trail-segment {
-    position: absolute;
-
-    height: 3px;
-
-    pointer-events: none;
-
-    transform-origin: left center;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 59, 193, 0.9),
-        rgba(234, 172, 209, 0.7),
-        transparent
-    );
-
-    box-shadow:
-        0 0 6px rgba(255, 59, 193, 0.8),
-        0 0 14px rgba(158, 45, 92, 0.5);
-
-    animation: rosa-slash-fade 0.45s ease-out forwards;
-}
-
-@keyframes rosa-slash-fade {
-    from {
-        opacity: 0.9;
+    .condition-section + .condition-section {
+        border-top: vars.$border-width solid var(--color-border);
+        border-left: none;
     }
 
-    to {
-        opacity: 0;
-    }
 }
-
-// Animated borders
-
-// Interactive stats
-
-// Waking sections
-
-// Roses

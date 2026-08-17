@@ -1,9 +1,20 @@
 const starContainer = document.querySelector(".rosa-stars");
 const trailContainer = document.querySelector(".rosa-trail");
 
-let isMouseDown = false;
-let previousX = null;
-let previousY = null;
+let isCharging = false;
+let chargeStartTime = null;
+let chargeAmount = 0;
+
+const MAX_CHARGE_TIME = 3000;
+const MIN_SWIPE_SPEED = 0.8;
+const MIN_SWIPE_DISTANCE = 80;
+const SWIPE_WINDOW = 150;
+
+let chargeStartX = 0;
+let chargeStartY = 0;
+
+let movementHistory = []
+let slashPath = [];
 
 function generateStars() {
 
@@ -82,22 +93,10 @@ function CursorGlow() {
     if (!glow) {
         return;
     }
-    document.addEventListener("mousedown", (event) => {
-        if (event.button === 0) { // Left mouse button
-            isMouseDown = true;
-        }
-    });
-
-    document.addEventListener("mouseup", () => {
-        isMouseDown = false;
-
-        previousX = null;
-        previousY = null;
-    });
-
     document.addEventListener("mousemove", (event) => {
         const x = event.clientX;
         const y = event.clientY;
+        const now = performance.now()
 
         document.documentElement.style.setProperty(
             "--mouse-x",
@@ -108,51 +107,185 @@ function CursorGlow() {
             "--mouse-y",
             `${y}px`
         );
-        if (isMouseDown && previousX !== null) {
-            createSlash(
-                previousX,
-                previousY,
-                x,
-                y
-            );
+
+        if (isCharging) {
+            movementHistory.push({
+                x: x,
+                y: y,
+                time: now
+            });
+            const cutoff = now - SWIPE_WINDOW;
+
+            movementHistory = movementHistory.filter(point => point.time >= cutoff);
         }
 
-        previousX = x;
-        previousY = y;
+        document.addEventListener("mousedown", (event) => {
+            if (event.button !== 0) {
+                return;
+            }
+
+            isCharging = true;
+
+            chargeStartX = event.clientX;
+            chargeStartY = event.clientY;
+            chargeStartTime = performance.now();
+
+            chargeAmount = 0;
+
+            movementHistory = [
+                {
+                    x: event.clientX,
+                    y: event.clientY,
+                    time: performance.now()
+                }
+            ];
+            slashPath = [];
+        });
+
+        document.addEventListener("mouseup", (event) => {
+            if (event.button !== 0) {
+                return;
+            }
+
+            if (!isCharging) {
+                return;
+            }
+
+            const finalCharge = chargeAmount;
+
+            const releaseX = event.clientX;
+            const releaseY = event.clientY;
+            const releaseTime = performance.now();
+
+            const swipeStart = movementHistory[0];
+
+            if (swipeStart) {
+                const dx = releaseX - swipeStart.x;
+                const dy = releaseY - swipeStart.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const elapsed = releaseTime - swipeStart.time;
+                const speed = elapsed > 0 ? distance / elapsed : 0;
+                const angle = Math.atan2(dy, dx);
+                const didSlash =
+                    distance >= MIN_SWIPE_DISTANCE &&
+                    speed >= MIN_SWIPE_SPEED;
+
+                const centerX = (chargeStartX + releaseX) / 2;
+                const centerY = (chargeStartY + releaseY) / 2;
+
+                console.log({
+                    points: slashPath.length,
+                    charge: finalCharge,
+                    distance: distance,
+                    speed: speed,
+                    angle: angle,
+                    didSlash: didSlash
+                });
+
+                if (didSlash) {
+
+                    slashPath = [
+                        ...movementHistory,
+                        {
+                            x: releaseX,
+                            y: releaseY,
+                            time: releaseTime
+                        }
+                    ];
+
+                    createSlash({
+                        charge: finalCharge,
+                        distance: distance,
+                        speed: speed,
+                        path: slashPath
+                    });
+                }
+
+            }
+            isCharging = false;
+            chargeStartTime = null;
+            chargeAmount = 0;
+
+            movementHistory = [];
+            slashPath = [];
+
+            document.documentElement.style.setProperty(
+                "--charge",
+                "0"
+            );
+        });
     });
 }
 
+function updateCharge() {
+    if (isCharging) {
+        const elapsed =
+            performance.now() - chargeStartTime;
 
-function createSlash(previousX, previousY, currentX, currentY) {
+        chargeAmount = Math.min(elapsed / MAX_CHARGE_TIME, 1);
 
-    const dx = currentX - previousX;
-    const dy = currentY - previousY;
+        document.documentElement.style.setProperty(
+            "--charge",
+            chargeAmount
+        );
+    }
 
-    const distance = Math.sqrt(
-        dx * dx + dy * dy
-    );
+    requestAnimationFrame(updateCharge);
+}
 
-    const angle =
-        Math.atan2(dy, dx) * 180 / Math.PI;
+function createSlash({ charge, distance, speed, path }) {
+    if (!path || path.length < 2) {
+        return;
+    }
 
-    const slash = document.createElement("span");
+    const slash = document.createElement("div");
+    slash.classList.add("rosa-slash");
 
-    slash.classList.add("rosa-trail-segment");
+    const tear = document.createElement("div");
+    tear.classList.add("rosa-slash__tear");
 
-    slash.style.left = `${previousX}px`;
-    slash.style.top = `${previousY}px`;
+    const glow = document.createElement("div");
+    glow.classList.add("rosa-slash__glow");
 
-    slash.style.width = `${distance}px`;
+    const core = document.createElement("div");
+    core.classList.add("rosa-slash__core");
 
-    slash.style.transform =
-        `rotate(${angle}deg)`;
+    slash.appendChild(tear);
+    slash.appendChild(glow);
+    slash.appendChild(core);
+
+    const start = path[0];
+    const end = path[path.length - 1];
+
+    const dx = end.x - start.x;
+    const dy = end.y - start.y;
+
+    const angle = Math.atan2(dy, dx);
+
+    const slashLength = Math.max(distance, 100 + charge * 300);
+    const speedFactor = Math.min(speed / 3, 1);
+    const slashWidth = 4 + speedFactor * 8;
+
+    slash.style.left = `${start.x}px`;
+    slash.style.top = `${start.y}px`;
+
+    slash.style.setProperty("--slash-angle", `${angle}rad`);
+
+    slash.style.width = `${slashLength}px`;
+    slash.style.height = `${slashWidth}px`;
+
+    slash.style.setProperty("--slash-charge", charge);
+    slash.style.setProperty("--slash-speed", `${speedFactor}`);
 
     trailContainer.appendChild(slash);
-
-    slash.addEventListener("animationend", () => {
-        slash.remove();
-    });
+    slash.addEventListener(
+        "animationend",
+        () => {
+            slash.remove();
+        }
+    );
 }
 
+updateCharge();
 generateStars();
 CursorGlow();
