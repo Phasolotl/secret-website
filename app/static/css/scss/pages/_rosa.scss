@@ -10,6 +10,10 @@
     --color-primary: #FF3BC1;
     --color-secondary: #9E2D5C;
     --color-border: #9E2D5C;
+
+    --border-highlight: #9E2D5C;
+    --border-highlight-bright: #FF3BC1;
+    --border-speed: 4s;
 }
 
 .rosa-world {
@@ -22,7 +26,6 @@
     user-select: none;
 
     background: #000000;
-    z-index: 2;
 }
 
 // Starry background
@@ -89,7 +92,7 @@
 }
 
 // Cursor glow
-
+/*
 .rosa-glow {
     position: fixed;
     inset: 0;
@@ -104,7 +107,7 @@
         transparent 70%
     );
 }
-
+*/
 // Cursor Slash
 
 .rosa-trail {

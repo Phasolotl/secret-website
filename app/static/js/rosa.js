@@ -73,8 +73,8 @@ function generateStars() {
         );
 
         // Star Movements
-        const xMovement = Math.random() * 20 + 30;
-        const yMovement = Math.random() * 20 - 10;
+        const xMovement = Math.random() * 20 + 100;
+        const yMovement = Math.random() * 20 + 100;
 
         star.style.setProperty("--drift-x", `${xMovement}px`);
         star.style.setProperty("--drift-y", `${yMovement}px`);
