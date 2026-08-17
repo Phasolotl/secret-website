@@ -14,4 +14,4 @@ def sheet():
     return render_template('sheet_rosa.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
