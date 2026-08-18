@@ -171,7 +171,7 @@ body {
   min-height: 100vh;
   background-color: var(--color-background);
   color: var(--color-text);
-  font-family: sans-serif;
+  font-family: lexend;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -651,6 +651,49 @@ button:active {
     text-shadow: none;
   }
 }
+.item-entry {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.item-card {
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.item-card h3 {
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+.item-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 8px rgba(255, 59, 193, 0.12);
+  transform: translateY(-2px);
+}
+
+.ticket {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.ticket:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 8px rgba(255, 59, 193, 0.12);
+}
+.ticket span {
+  font-weight: bold;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+.ticket:hover span {
+  color: var(--color-secondary);
+  text-shadow: 0 0 1px var(--color-primary), 0 0 5px var(--color-secondary);
+}
+
 @media (max-width: 600px) {
   .resources {
     grid-template-columns: 1fr;
