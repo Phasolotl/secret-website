@@ -14,6 +14,9 @@
     --border-highlight: #9E2D5C;
     --border-highlight-bright: #FF3BC1;
     --border-speed: 4s;
+
+    --header-highlight: rgba(255, 59, 193, 0.45);
+    --header-pulse-speed: 6s;
 }
 
 .rosa-world {
@@ -201,8 +204,8 @@
             90deg,
             transparent,
             #9E2D5C 10%,
-            black 45%,
-            black 55%,
+            white 45%,
+            white 55%,
             #FF3BC1 90%,
             transparent
         );
@@ -210,7 +213,7 @@
         border-radius: 50%;
 
         filter:
-            drop-shadow(0 0 5px black)
+            drop-shadow(0 0 5px white)
             drop-shadow(0 0 15px #FF3BC1);
     }
 
