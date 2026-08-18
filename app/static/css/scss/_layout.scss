@@ -28,7 +28,7 @@
 .home-container {
     width: min(100% - 2rem, 1200px);
     margin-inline: auto;
-
+    user-select: text;
 }
 
 // Footer
@@ -44,4 +44,11 @@ header,
 footer {
     position: relative;
     z-index: 101;
+}
+
+// Index world
+
+.home-world {
+    min-height: 100vh;
+    user-select: none;
 }

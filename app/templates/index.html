@@ -6,6 +6,9 @@
 
 {% block content %}
 
+<div class="home-world">
+
+    <div class="theme-effects" aria-hidden="true"></div>
 
 <main class="home-container">
     <div class="character-compendium">
@@ -96,5 +99,8 @@
     </section>
 </div>
 </main>
+</div>
+<script src="{{ url_for('static', filename='js/rosa.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 {% endblock %}

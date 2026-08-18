@@ -10,13 +10,10 @@ ROSA(.AI) | Game Sheets
 
 {% block content %}
 
-    <div class="rosa-glow" aria-hidden="true"></div>
-    <div class="rosa-charge" aria-hidden="true"></div>
-    <div class="rosa-trail" aria-hidden="true"></div>
 
 <div class="rosa-world">
 
-    <div class="rosa-stars" aria-hidden="true"></div>
+    <div class="theme-effects" aria-hidden="true"></div>
 
 <main class="character-sheet">
 
@@ -271,6 +268,8 @@ ROSA(.AI) | Game Sheets
         </div>
     </section>
 </main>
-<script src="{{ url_for('static', filename='js/rosa.js') }}"></script>
+<script src="{{ url_for('static', filename='js/rosa.js') }}">
+    initializeRosaEffects();
+</script>
 </div>
 {% endblock %}
